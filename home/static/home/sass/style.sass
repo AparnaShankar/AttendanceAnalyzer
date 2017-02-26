@@ -1,0 +1,141 @@
+$size: 20rem
+
+*
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+body
+  background: #333
+  font: 100%/1 "Helvetica Neue", Arial, sans-serif
+  
+.login
+  position: absolute
+  top: 50%
+  left: 50%
+  margin: #{-$size / 2} 0 0 #{-$size / 2}
+  width: $size
+  height: $size
+  padding: 20px
+  background: #fff
+  border-radius: 5px
+  overflow: hidden
+  &:hover, &.focused
+    > .login-header
+      width: 2rem
+      > .text
+        font-size: 1rem
+        transform: rotate(-90deg)
+  &.loading
+    > .login-header
+      width: $size
+      > .text
+        display: none
+      > .loader
+        display: block
+    
+.login-header
+  position: absolute
+  left: 0
+  top: 0
+  z-index: 1
+  width: $size
+  height: $size
+  background: orange
+  transition: width 0.5s ease-in-out
+  > .text
+    display: block
+    width: 100%
+    height: 100%
+    font-size: 5rem
+    text-align: center
+    line-height: $size
+    color: #fff
+    transition: all 0.5s ease-in-out
+  > .loader
+    display: none
+    position: absolute
+    left: 5rem
+    top: 5rem
+    width: 10rem
+    height: 10rem
+    border: 2px solid #fff
+    border-radius: 50%
+    animation: loading 2s linear infinite
+    &:after
+      content: ""
+      position: absolute
+      left: 4.5rem
+      top: -0.5rem
+      width: 1rem
+      height: 1rem
+      background: #fff
+      border-radius: 50%
+      border-right: 2px solid orange
+    &:before
+      content: ""
+      position: absolute
+      left: 4rem
+      top: -0.5rem
+      width: 0
+      height: 0
+      border-right: 1rem solid #fff
+      border-top: 0.5rem solid transparent
+      border-bottom: 0.5rem solid transparent
+
+@keyframes loading
+  50%
+    opacity: 0.5
+  100%
+    transform: rotate(360deg)
+
+.login-form
+  margin: 0 0 0 2rem
+  padding: 0.5rem
+
+.login-input
+  display: block
+  width: 100%
+  font-size: 2rem
+  padding: 0.5rem 1rem
+  box-shadow: none
+  border-color: #ccc
+  border-width: 0 0 2px 0
+  & + &
+    margin: 10px 0 0
+  &:focus
+    outline: none
+    border-bottom-color: orange
+
+.login-btn
+  $btn-size: 5rem
+  $btn-border: 0.6rem
+  $triangle-width: 2.4rem
+  $triangle-height: 1.2rem
+  position: absolute
+  right: 1rem
+  bottom: 1rem
+  width: $btn-size
+  height: $btn-size
+  border: none
+  background: orange
+  border-radius: 50%
+  font-size: 0
+  border:  $btn-border solid transparent
+  transition: all 0.3s ease-in-out
+  &:after
+    content: ""
+    position: absolute
+    left: 1rem
+    top: 0.8rem
+    width: 0
+    height: 0
+    border-left: $triangle-width solid #fff
+    border-top: $triangle-height solid transparent
+    border-bottom: $triangle-height solid transparent
+    transition: border 0.3s ease-in-out 0s
+  &:hover, &:focus, &:active
+    background: #fff
+    border-color: orange
+    outline: none
+    &:after
+      border-left-color: orange

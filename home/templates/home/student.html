@@ -1,0 +1,204 @@
+<html>
+  <head>
+  
+	{% load staticfiles %}
+        <!-- Material Design Lite -->
+        <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        
+    <script>
+         //gloabal
+         //accept
+          var classes={{clsatt}}; 
+          var totalclasses={{totatt}};
+          //calculations
+          var c = parseFloat(classes);
+          var tc = parseFloat(totalclasses);
+          var percent=(c/tc)*100;
+          percent = percent.toFixed(2);
+        //makeup attendance calculations
+        function cal()
+        {
+          var p=percent;
+          var i=1;
+          var op="";
+          var pp=parseFloat(document.getElementById("sample4").value);
+          if(isNaN(pp))
+          {
+            op="Please give the input";
+          }
+          else if(percent < pp){
+           while(p < pp){
+               p=(c+i)/(tc+i)*100;
+              i=i+1;
+              }
+            op="Attend "+i+" classes continously.";
+            }
+         else
+         {
+            op="You have "+pp+"% or above.";
+            }
+          var x=document.getElementById("output");
+          var para=document.createElement("p");
+          var newtext=document.createTextNode(op);
+          para.appendChild(newtext);
+          var att = document.createAttribute("id");
+          att.value = "output";                          
+          para.setAttributeNode(att); 
+          document.body.replaceChild(para,x);
+        }
+         //future attendance calculations
+        function calf()
+        {
+          var op="";
+          var n="";
+          var cc=parseInt(document.getElementById("sample2").value);
+          var tt=parseInt(document.getElementById("sample3").value);
+          if(isNaN(cc)||isNaN(tt))
+          {
+            op="Please give the input";
+          }
+         else
+         {
+            var a= c+cc;
+            var b= tc+tt;
+            var per=(a/b)*100;
+            per = per.toFixed(2);
+            op="In future if you attend "+cc+" classes out of "+tt+" classes then your attendance will be "+per+"%";
+            }
+          var x=document.getElementById("output1");
+          var para=document.createElement("p");
+          var newtext=document.createTextNode(op);
+          para.appendChild(newtext);
+          var att = document.createAttribute("id");
+          att.value = "output1";                          
+          para.setAttributeNode(att); 
+          document.body.replaceChild(para,x);
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.purple-light_green.min.css" />
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    
+    <style>
+        .demo-card-square.mdl-card {
+                                     width: 700px;
+                                     height: 50px;
+                                    }
+        .demo-card-square > .mdl-card__title {
+                                                color: #fff;
+                                                background:#9C27B0;
+                                              }
+
+        body {
+                padding:20px
+                background: #76FF03;
+                position: relative;
+             }
+             p
+             {
+                padding-right:50px;
+                padding-top:0px;
+               text-align: right;
+               font-family: 'Roboto';
+               font-size: 25;
+             
+             }
+    </style>
+  </head>
+  
+  <body bgcolor="#fafafa">
+    <div>
+    <div style="float:left;padding-left:40px;padding-top:20px">
+        <!-- Square Attendance Card -->
+        <div style="height:50px;width:400px" class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div style="height:50px;width:400px"class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">Attendance Percentage</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <br><br>
+                <span style="font-family: 'Roboto';font-size:60;float:center">{{perstu}}</span>
+                <br><br>
+            </div>
+        </div>
+		<img src="{% static 'home/graphs/stutot.png' %}" width="555" style="padding-top:30">
+    </div>
+    <div style="float:right;padding-right:40px;padding-top:20px">
+        <!-- Numeric Textfield with Floating Label -->
+            <form name="ff" method="post">
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                         <h2 class="mdl-card__title-text">Makeup percentage</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                            Enter the attendance percentage you want.We will give you the number of classes you have to attend continuosly to attain that percentage.
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" name="percentage">
+                        <label class="mdl-textfield__label" for="sample4">Percentage(example: 75)...</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                    <input type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Show me ->" onClick="cal()">
+                </div>
+            </form>
+       </div>
+      </div>
+      
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+   <p id="output"></p>
+   
+   <!-- Numeric Textfield with Floating Label -->
+   <div style="float:right;padding-right:40px;padding-top:10px">
+    <form name="f" method="post">
+    <div class="demo-card-square mdl-card mdl-shadow--2dp" style="height:200px;width:700px">
+        <div class="mdl-card__title mdl-card--expand"style="height:55px;width:700px">
+            <h2 class="mdl-card__title-text">Future attendance percentage</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Enter the number of classes that you are planning to attend in future and total number of classes in future.
+            We will give you your future attendance percentage
+        </div>
+        <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+            <label class="mdl-textfield__label" for="sample2">Classes that you will attend(example: 75)...</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Total number of classses(example: 100)...</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            </div>
+        <input type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Show me ->" onClick="calf()">
+    </div>
+    </form>
+    </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br>
+     <p id="output1"></p>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

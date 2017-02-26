@@ -1,0 +1,112 @@
+<html>
+  <head>
+  
+	{% load staticfiles %}
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!-- <link rel="stylesheet" href="{% static 'home/css/reset.css' %}" type = "text/css"> -->
+    <style>
+        .demo-card-square.mdl-card {
+  width: 385px;
+  height: 200px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background: #9C27B0;
+}
+.test{
+    height:200px;
+    width:200px;
+    }
+
+body {
+  background: #fafafa;
+  position: relative;
+}
+</style>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  </head>
+  <body>
+  <br>
+  <br>
+  
+   <form name="fac" action="/faculty/" method="post"> {% csrf_token %}
+    <table align="center">
+        <tr align="center">
+            <td>
+                <!-- Square card -->
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">BATCH</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        For example, if academic year is 2013-2017, enter 13.
+                    </div>
+                    <!-- Simple Textfield -->
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" maxlength="2" name = "batch">
+                        <label class="mdl-textfield__label" for="sample1">Batch...</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <!-- Square card -->
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">SECTION</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Enter the section.
+                    </div>
+                    <!-- Simple Textfield -->
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="sample1" maxlength="1" name = "section">
+                        <label class="mdl-textfield__label" for="sample1">Section...</label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr height="50px"></tr>
+        <tr>
+            <td></td>
+            <td>
+            <input type="radio" name="option" value="overall" class="mdl-button mdl-js-button" style="height:50px;width:100px">
+            <span style="font-family: 'Roboto';font-size:28">Overall</span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+            <input type="radio" name="option" value="subjectwise" class="mdl-button mdl-js-button" style="height:50px;width:100px">
+            <span style="font-family: 'Roboto';font-size:28">Subject-wise</span>
+			<input type="text" name="subjectsel" value="" class="login-input" placeholder="Eg.wt" style="height:50px;width:215px;font-size:30px;margin-left:21px">
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+            <input type="radio" name="option" value="studentwise" class="mdl-button mdl-js-button" style="height:50px;width:100px">
+            <span style="font-family: 'Roboto';font-size:28">Student-wise</span>
+			<input type="text" name="studentsel" value="" class="login-input"  placeholder="Eg.13h61a0501" style="height:50px;width:215px;font-size:30px;margin-left:18px">
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td align="right">
+            <input type="submit" value="GO" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="height:50px;width:100px;background-color:#ff4081">
+            </td>
+
+        </tr>
+    </table>
+  </form>
+  </body>
+</html>

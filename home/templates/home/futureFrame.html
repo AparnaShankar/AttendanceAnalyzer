@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.purple-light_green.min.css" />
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        .demo-card-square.mdl-card {
+                                     width: 550px;
+                                     height: 300px;
+                                    }
+        .demo-card-square > .mdl-card__title {
+                                                color: #fff;
+                                                background:#9C27B0;
+                                              }
+
+        body {
+                padding:50px
+                background: #fafafa;
+                position: relative;
+             }
+    </style>
+  </head>
+  
+  <body bgcolor="#fafafa">
+  <br>
+    <center>
+        <!-- Numeric Textfield with Floating Label -->
+<form action="#">
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">Future attendance percentage</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Enter the number of classes that you are planning to attend in future and total number of classes in future.
+    We will give you your future attendance percentage
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+    <label class="mdl-textfield__label" for="sample4">Classes that you will attend(example: 75)...</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+   </div>
+   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+    <label class="mdl-textfield__label" for="sample4">Total number of classses(example: 100)...</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+  </div>
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="future.html" target="m">
+      Show me ->
+    </a>
+  </div>
+</div>
+</form>
+    </center>
+  </body>
+</html>
